@@ -1,14 +1,7 @@
 <x-app-layout>
   <x-slot name="title">{{ __('Members') }}</x-slot>
     <x-slot name="header">
-        {{-- <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __($pageName) }}
-            {{ __('Super Admin') }}
-
-        </h2> --}}
-        {{-- <div class="flex justify-between"> --}}
             <a href="{{route('register')}}" class=" items-center px-4 py-3  bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Register Member</a>
-            {{-- :value="old('name') --}}
             <form class="" action="{{route('members.search')}}" method="GET">
                 <div class="flex">
                     <x-input id="search" placeholder="Search by name" class="w-36 " type="text" name="search" required autofocus />
@@ -17,7 +10,6 @@
                     </x-button>
                 </div>        
             </form>
-        {{-- </div> --}}
     </x-slot>
 
     
@@ -105,10 +97,6 @@
                     </table>
                     <div class="mt-3">
                         {{ $data->links('pagination::tailwind') }}
-                        {{-- trying to check how to use pagination functions --}}
-                        {{-- @if ($data->hasPages())
-                            <h4>{{$data->firstItem()}}</h4>
-                        @endif --}}
                     </div>
                 </div> 
             </div>

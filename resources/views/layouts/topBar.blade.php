@@ -1,7 +1,4 @@
 <div class="">
-     {{-- sm:flex sm:items-center --}}
-    <!-- Settings Dropdown -->
-
     @if (session('notAllow'))
         <button class="flex items-center cursor-not-allowed  text-sm font-medium text-gray-200 hover:text-white hover:border-white focus:outline-none focus:text-white focus:border-white transition duration-150 ease-in-out">
             <div>{{ Auth::user()->name }}</div>
@@ -36,17 +33,9 @@
                     <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                     </x-dropdown-link>
-
-                    <!-- Authentication -->
-                    {{-- <form method="POST" action="{{ route('logout') }}">
-                        @csrf --}}
-
-                    
                         <x-dropdown-link :href="route('logout')">
                             {{ __('Log Out') }}
                         </x-dropdown-link>
-                        
-                    {{-- </form> --}}
                 </x-slot>
             </x-dropdown>
         </div>

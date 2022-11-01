@@ -85,39 +85,19 @@ class CategoryController extends Controller
         //
         $data = Category::where('id', $id)->get();
 
-        // use to find error 
-        /* echo '<pre>';
-        print_r ($data[0]);
-        echo '</pre>';
-        echo $data[0]->category;
-        echo is_array($data[0]);
-        echo gettype($data[0]); */
-
+  
         $array = (array) $data[0];
 
         $obj = $data[0];
         
-        // $request->id = $array->id;
-        // $request->category = $array->category;
-        // $obj = (object) array_merge( (array)$obj, array( 'bar' => '1234' ) );
-        echo '<pre>';
+     
         print_r ($obj);
         echo '</pre>';
 
 
         echo ($array->id);
 
-        // echo '<pre>';
-        // echo $request->category;
-        // echo '</pre>';[]
-
-        // echo $request->input('id');
-
-        // session()->flash('_old_input', $data[0]);
-
-        // return redirect()->route('categories')->with('obj', $array);
-        // return redirect()->back()->withInput();
-
+    
     }
 
     /**
@@ -135,18 +115,13 @@ class CategoryController extends Controller
 
         ]);
        
-        // it works but not a good way
-        // $validator->after(function ($validator) {
-        //     $validator->errors()->add('title', 'update');
-        // });
+     
 
         if ($validator->fails()) {
             return redirect()->route('categories')->withErrors($validator)->withInput()->with(['update-fail'=> 'Update'], ['action', 'http://127.0.0.1:8000/updateCategory']);
-            // another way of passing multiple value
-            // ->with('update-fail', 'Update')->with('action', "http://127.0.0.1:8000/updateCategory")
+        
         }
 
-        //
         $category = Category::find($request->id);
         $category->category = $request->category;
         $category->save();    

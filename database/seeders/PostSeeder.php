@@ -16,9 +16,9 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        $posts = Post::factory()->times(3)->create();
+        $posts = Post::factory()->times(10)->create();
         $faker = \Faker\Factory::create();
-        $url = "https://source.unsplash.com/random/1200x800";
+        $url = "https://source.unsplash.com/random/800x480";
         foreach ($posts as $post) {
             $post->addMediaFromUrl($url)->toMediaCollection('posts');
         }

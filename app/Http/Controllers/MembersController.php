@@ -26,67 +26,13 @@ class MembersController extends Controller
     const AUTHOR = 3;
     //
     public function show(){
-        // $data = User::latest()->paginate(3);
-        // $data = User::where('id', '!=', auth()->user()->id)->paginate(3);
-
-
-        
-        // print_r($u[0]['role']['role']);
-        // foreach ($u as $value) {
-        //     // echo($value . '<br>');
-        //     $x = $value;
-        // }
-
-        //get user and role data
-        /* $u = User::with('role')->where('role_id', auth()->user()->role_id)->get();
-        $u = $u[0];
-        echo($u->role->role); */
-
-        // fetch role and user data 
-        /* $u = Role::with('user')->where('role', 'super admin')->get();
-        $u = $u[0];
-        echo $u->user[0]->name;*/
-
-        
-        // $this->authorize('isSuperAdmin'); #it is use for denied only
-         
+       
 
         if (Gate::allows('isSuperAdmin', auth()->user())) {
-         
-            // $data = User::with('role')->where( 'role', '!=', 'super admin')->where('id', '!=', auth()->user()->id )->paginate(3);
 
-            // $data = Role::find(auth()->user()->role_id); // dd($data->user); works. 
-            // $data = Role::where('id', '!=' ,auth()->user()->role_id)->get(); // dd($data->user); don't works.
-            
-
-            /* one way of fetch user data according to role */
-
-           /*// fetch data through role.
-            // $records = Role::with('user')->where('role', '!=', 'super admin')->get(); // fetch the user data also 
-            $records = Role::where('role', '!=', 'super admin')->get(); // not fetch but can if call same done by foreach;
-
-
-            dd($records);
-            $data = collect(); // create collection.
-            
-            // traversing collection to access role from user
-            foreach ($records as $key => $roles) {
-                foreach ($roles->user as $key => $user) 
-                {                   
-                    // fetch user data one by one 
-                    $data -> push($user);
-                } 
-            }
-
-            // applying custom pagintaion which in AppServiceProvider boo()
-            $data = $data->paginate(2); */
-
-            // The best way
             $data = User::whereRelation('role', 'role','!=', 'super admin')->paginate(8);
         }
         else{
-             // $data = User::with('role')->where( 'role_id', 'normal')->paginate(3);
-            // $data = Role::with('user')->where('role', 'normal')->paginate(1);
 
             /* second way of fetch user data according to role.*/
             $data = User::with('role')->where('role_id',  self::AUTHOR)->paginate(8);
@@ -123,55 +69,18 @@ class MembersController extends Controller
 
         $request->validate([
             'name' => 'required|max:255',
-            // 'email' => 'required|email|unique:users',
             'username' => ['required', 'min:4', Rule::unique('users')->ignore($request->id)],
             'password' => 'required|confirmed|min:6',
             $roleValidation
         ]);
     }
 
-   /*  public function create(){
-        $roles = Role::select('id', 'role')->get()->toArray();  
-        return view('auth.register', compact('roles'));
-    }
-
-    public function insert(Request $request){
-
-        $this->validation($request);
-        $role_id = '';
-        
-        // only super admin can set the role
-        if(Gate::denies('isSuperAdmin', auth()->user())){
-            $role_id = self::AUTHOR;
-        }
-        else{
-            $role_id =  $request->role_id;
-        }
-
-        $insert = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'username' => $request->username,
-            'role_id' => $role_id,
-            'password' => Hash::make($request->password)
-        ]);
-
-        return redirect()->route('members')->with('message','New user '.$request->name.' added');
-    }
- */
+   
     
     public function edit($id, Request $request){
         $data = User::find($id);
 
-        // store until session destried
-        // Session::set('_old_input.key', Input::get('value')); // store value
-        // $request->session()->put('_old_input', $data[0]); // store array
-        // session(['_old_input.key' => 'value']); //global helper
-
-        // put data into input;
-        /* $request->request->add(['data'=> $data]);
-        dd($request->input()); */
-
+       
         // store for only one request
         session()->flash('_old_input', $data);
 

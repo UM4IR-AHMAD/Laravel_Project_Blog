@@ -38,11 +38,5 @@ class AuthServiceProvider extends ServiceProvider
             return $user->Role->role != 'author';
         });
 
-
-      /*   Gate::define('isAdmin', function($user){
-            return ($user->role != 'normal')
-                ? Response::allow()
-                : Response::deny('You should be admin');2
-        }); */
     }
 }

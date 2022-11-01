@@ -133,11 +133,6 @@
                      
                     <div class="mt-3">
                         {{ $data->links('pagination::tailwind') }}
-
-                        {{-- trying to check how to use pagination functions
-                        @if ($data->hasPages())
-                            <h4>{{$data->firstItem()}}</h4>
-                        @endif --}}
                     </div>
              </div>
         </div> 

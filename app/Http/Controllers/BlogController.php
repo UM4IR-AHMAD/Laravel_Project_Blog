@@ -78,7 +78,6 @@ class BlogController extends Controller
             $request->session()->flash('search_input', $search_input);            
         }
         else {
-            // $search_input = $request->input();
             $request->session()->flash('search_input', $search_input);
         }
 

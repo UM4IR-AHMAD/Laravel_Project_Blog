@@ -14,13 +14,7 @@ use App\Http\Controllers\DashboardController;
 
 
 
-
-# old style: cant call middleware after prefix
-// Route::prefix('admin')->group(['middleware' => 'auth'], function(){
-
-
 Route::middleware(['auth', 'verified'])->prefix('admin')->group(function(){
-    // 'verified'
    
 
 
@@ -55,56 +49,57 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function(){
     // ------- member routes -----
     Route::group(['middleware' => 'role'], function(){
 
-
-
         // ------- categories -------
         Route::get('categories', [CategoryController::class, 'index'])->name('categories');
+        // search category
         Route::get('categories/search', [CategoryController::class, 'search'])->name('categories.search');
+        // add category
         Route::post('addCategory',[CategoryController::class,'store'])->name('category.store');
-        // Route::get('/updateCategory/{id}',[CategoryController::class,'edit'])->name('category.edit');
+        // update category
         Route::post('updateCategory',[CategoryController::class,'update'])->name('category.update');
+        // delete category
         Route::get('deleteCategory/{id}',[CategoryController::class,'destroy'])->name('category.delete');
 
 
 
+        // ------- Members -------
+         // Route::get('/members',[MembersController::class,'show'])->middleware('can:notAuthor')->name('members');
+         Route::get('members',[MembersController::class,'show'])->name('members');
 
-        /* Route::prefix('/members')->group(function ()
-        {
-            
-        }); */
+         // search member
+         Route::get('members/search',[MembersController::class,'search'])->name('members.search');
 
-            # members
-            // Route::get('/members',[MembersController::class,'show'])->middleware('can:notAuthor')->name('members');
-            Route::get('members',[MembersController::class,'show'])->name('members');
+         # update member
+         Route::get('updateMember/{id?}',[MembersController::class, 'edit'])->name('member.edit');
+         Route::put('updateMember',[MembersController::class, 'update'])->name('member.update');
 
-            Route::get('members/search',[MembersController::class,'search'])->name('members.search');
+         # update member
+         Route::put('updateEmali',[MembersController::class, 'updateEmail'])->name('member.updateEmail');
 
-            # add new member
-            Route::get('addMember',[MembersController::class, 'create'])->name('member.create');
-            Route::post('addMember',[MembersController::class, 'insert'])->name('member.insert');
+         # delete member
+         Route::get('deleteMember/{id?}', [MembersController::class, 'delete'])->name('member.delete');
 
-            # update member
-            Route::get('updateMember/{id?}',[MembersController::class, 'edit'])->name('member.edit');
-            Route::put('updateMember',[MembersController::class, 'update'])->name('member.update');
-
-            # update member
-            Route::put('updateEmali',[MembersController::class, 'updateEmail'])->name('member.updateEmail');
-
-            # delete member
-            Route::get('deleteMember/{id?}', [MembersController::class, 'delete'])->name('member.delete');
+           
     });
 
 
-
+    // ------- Profile -------
+    // Profile view
     Route::get('profile',[ProfileController::class, 'edit'])->name('profile.edit');
+    // Update info
     Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
+    // update Email Address
     Route::put('updateEmail', [ProfileController::class, 'updateEmail'])->name('profile.updateEmail');
 
 
-    // dashboard
+
+    // ------- dashboard -------
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+
+    // ------- settings -------
     Route::get('settings', [SettingsController::class, 'index'])->name('settings');
+    // update logo
     Route::post('upload-logo', [SettingsController::class, 'store'])->name('settings.upload-logo');
 
 });

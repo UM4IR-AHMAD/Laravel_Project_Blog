@@ -45,31 +45,13 @@ class PostController extends Controller
 
     public function search(Request $request){
 
-        /* if (Gate::denies('isSuperAdmin', auth()->user())) {
-            $data = User::where('name','LIKE', $request->search.'%')->where( 'role_id', self::AUTHOR)->paginate(2);
-        }
-        else{
-            $data = User::where('name','LIKE', $request->search.'%')->where( 'role_id', '!=', self::SUPER_ADMIN)->paginate(2);
-        } */
-        // dd($request->search_by);
-
-        /* $input = $request->input();
-        if (empty($input())) {
-            $request->session()->flash('_old_input', $request->input());
-        }
-        else {
-            $request->session()->flash('_old_input', $request->input());
-        }
- */
 
         $search_input = $request->input();
-        // $search_input = collect($search_input);
         if (empty($search_input['search_by'])) {
             $search_input = $request->session()->get('search_input');
             $request->session()->flash('search_input', $search_input);            
         }
         else {
-            // $search_input = $request->input();
             $request->session()->flash('search_input', $search_input);
         }
 
@@ -155,7 +137,6 @@ class PostController extends Controller
         ]);
 
         $post->addMediaFromRequest('image')->toMediaCollection('posts');
-        // $post->addMediaFromRequest('image')->usingName('pic')->toMediaCollection();
 
         $this->removePreviewImages();
 
@@ -181,10 +162,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        // if ($id > 0) {
             $post = POST::find($id);
             session()->flash('_old_input', $post);            
-        // }
 
 
         # not allowing user to move other page without pbulis or discart
@@ -224,7 +203,6 @@ class PostController extends Controller
         if ($request->hasFile('image')) {
             $post->clearMediaCollection('posts');
             $post->addMediaFromRequest('image')->toMediaCollection('posts');
-            // $post->addMediaFromRequest('image')->usingName('pic')->toMediaCollection();
         }
       
 
@@ -241,11 +219,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        # use to delete all
-        // $post = Post::all()->each->delete();
-        
-        // Media::truncate(); # this work but need to import Media
-
         # use to remove single
         $post = Post::find($id)->delete();
 
@@ -255,7 +228,6 @@ class PostController extends Controller
 
     public function preview(Request $request)
     {
-        // dd($request->all());
         $imageRequired = '';
         $route = route('post.create');
         $imageName;
