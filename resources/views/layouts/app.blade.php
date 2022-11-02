@@ -52,8 +52,7 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/myJS.js') }}" defer></script>
 
-        <!-- Include the Quill text editor library -->
-        <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+       
         {{-- creating the text editor --}}
         <script src="{{ asset('js/quill.js') }}"></script>
     </body>
