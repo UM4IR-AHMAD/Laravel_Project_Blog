@@ -11,8 +11,8 @@
         </button>    
     @else
         <div class="block  "> 
-            <x-dropdown align="right" width="48">
-                <x-slot name="trigger">
+            <div id="dropdown" class="relative" onclick="dropMenu()"  >
+                <div>
                     <button class="flex items-center  text-sm font-medium text-gray-200 hover:text-white hover:border-white focus:outline-none focus:text-white focus:border-white transition duration-150 ease-in-out">
                         <div>
                             <i class="fas fa-user"></i>
@@ -26,18 +26,18 @@
                             </svg>
                         </div>
                     </button>
-                </x-slot>
+                </div>
 
-                <x-slot name="content">
+                <div id="dropdownMenu" class="absolute inset-0 h-0 overflow-hidden z-10 bg-white top-7 -left-9 transition-all text-xs " onmouseleave="closeMenu()">
 
-                    <x-dropdown-link :href="route('profile.edit')">
+                    <a class="block w-36 py-2 px-2 hover:bg-gray-200" href="route('profile.edit')">
                             {{ __('Profile') }}
-                    </x-dropdown-link>
-                        <x-dropdown-link :href="route('logout')">
-                            {{ __('Log Out') }}
-                        </x-dropdown-link>
-                </x-slot>
-            </x-dropdown>
+                    </a>
+                    <a class="block w-36 py-2 px-2 hover:bg-gray-200" href="route('logout')">
+                        {{ __('Log Out') }}
+                    </a>
+                </div>
+            </div>
         </div>
     @endif
     

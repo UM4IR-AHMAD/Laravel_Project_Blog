@@ -54,6 +54,6 @@
         <!-- Include the Quill text editor library -->
         <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
         {{-- creating the text editor --}}
-        <script src="{{ asset('js/quill.js') }}"></script>
+        <script src="{{ asset('js/myQuill.js') }}"></script>
     </body>
 </html>
