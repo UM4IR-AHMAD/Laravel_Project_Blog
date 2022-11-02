@@ -32,7 +32,7 @@
                             
                             <img class="hidden sm:block hover:shadow-none shadow-md shadow-rose-700 w-32  hover:scale-110 transition rounded-full  mb-2" src="{{ $category->getFirstMedia('categories')->getUrl('thumb') }}" alt="">
 
-                            <span class="text-xs sm:text-md md:text-lg lg:text-xl">{{$category->category}} </span>
+                            <span class="text-xs capitalize sm:text-md md:text-lg lg:text-xl">{{$category->category}} </span>
 
                         </a>
                     </div>

@@ -45,7 +45,7 @@ class SettingsController extends Controller
         $request->file('logo')->storeAs('logo/', $logoName, 'public');
 
         // return redirect()->route('settings');
-        return back()->with('logoName', $logoName);
+        return back()->with('logoName', $logoName)->with('message', 'Logo has updated sucessfully');
     }
 
     /**

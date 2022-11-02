@@ -7,6 +7,16 @@
         </h2>
     </x-slot>
 
+    <div class="mt-2 px-2">
+        <x-validationErrors :errors="$errors" />
+    </div>
+    
+    @if (session()->has('message'))
+        <div class="fixed w-full top-28 animate-hide">
+            <x-successMessage />
+        </div>
+    @endif
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">

@@ -70,7 +70,8 @@
                                     {{ __('Members') }}
                                 </span>
                         </x-nav-link>
-                        <x-nav-link
+                        @can('isSuperAdmin')
+                            <x-nav-link
                             class="{{$class}}" 
                             :href=" session('notAllow') 
                                 ? '#' 
@@ -80,7 +81,9 @@
                                     <i class="fas fa-cog mx-2 lg:inline  hidden"></i>
                                     {{ __('Settings') }}
                                 </span>
-                        </x-nav-link>     
+                            </x-nav-link>                                 
+                        @endcan
+                        
                     @endcan
 
                 </div>
