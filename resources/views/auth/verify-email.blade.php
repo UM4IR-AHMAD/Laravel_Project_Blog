@@ -27,14 +27,9 @@
                 </div>
             </form>
 
-            {{-- <form method="POST" action="{{ route('logout') }}">
-                @csrf --}}
-
-                <x-dropdown-link :href="route('logout')">
-                    {{ __('Log Out') }}
-                </x-dropdown-link>
-                
-            {{-- </form> --}}
+            <a :href="route('logout')">
+                {{ __('Log Out') }}
+            </a>
         </div>
     </x-auth-card>
 </x-guest-layout>

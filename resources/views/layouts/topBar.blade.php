@@ -30,10 +30,10 @@
 
                 <div id="dropdownMenu" class="absolute inset-0 h-0 overflow-hidden z-10 bg-white top-7 -left-9 transition-all text-xs " onmouseleave="closeMenu()">
 
-                    <a class="block w-36 py-2 px-2 hover:bg-gray-200" href="route('profile.edit')">
+                    <a class="block w-36 py-2 px-2 hover:bg-gray-200"   href="{{route('profile.edit')}}">
                             {{ __('Profile') }}
                     </a>
-                    <a class="block w-36 py-2 px-2 hover:bg-gray-200" href="route('logout')">
+                    <a class="block w-36 py-2 px-2 hover:bg-gray-200"   href="{{route('logout')}}">
                         {{ __('Log Out') }}
                     </a>
                 </div>
