@@ -49,7 +49,6 @@
         </div>
 
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/myJS.js') }}" defer></script>
 
         <!-- Include the Quill text editor library -->
