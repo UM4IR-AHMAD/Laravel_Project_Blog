@@ -1,7 +1,12 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-## Main Features
-Blog:
+
+## Project view and features
+
+### Blog
+<img src="https://user-images.githubusercontent.com/93633549/199653493-1a80fd9f-7868-425d-9e4e-ca7baf41dd61.png" alt="blog-managment" width="300"/>
+Features
+
 - Latest blog show in carousel/slider.
 - Top post.
 - Check posts list based on
@@ -11,63 +16,55 @@ Blog:
     - Title
     - Author/Writer
     
-Blog Managment:
+
+### Blog Managment
+<img src="https://user-images.githubusercontent.com/93633549/199653720-557c4994-35cb-4c9f-ae5b-0fa97ba3a477.png" alt="blog-managment" width="800"/>
+Features
+
 - Authentication.
 - Authorization with three roles
     - Super Admin.
     - Admin.
     - Author.
+- Login, trying limitation and remember me.
 - Email verfication or link for
     - First login.
     - Email Address update.
     - Password update.
     - Forget Password.
+- Profile update
 - Dashboard tab for overall blog statistics.
 - Posts CRUD and view 
     - Write posts with editor and check preview.
 - Categories CRUD.
 - Members CRUD.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Set-up Project
+ - clone the project.
+ - open the project VScode and enter commands.
+ - command: cp .env.example .env
+ - open .env file
+    - set the database details.
+    - optional: set the mail details if you want to use email verification and password change. 
+ - command: composer install.
+ - command: php artisan key:generate
+ - command: php artisan migrate:fresh --seed
+ - command: php artisan serve
+ 
+ ## Manage the blog
+ url for blog: http://127.0.0.1:8000
+ 
+ url for blog managment: http://127.0.0.1:8000/admin/login
+ ### Credentials for login
+  - Super Admin
+    - username: jhon
+    - password: 12345678
+  - Admin
+    - username: kate
+    - password: 12345678  
+  - Author
+    - username: warran
+    - password: 12345678
 
 ## License
-
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
