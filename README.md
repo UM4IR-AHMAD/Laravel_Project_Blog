@@ -51,7 +51,7 @@ Features
  - command: php artisan migrate:fresh --seed
  - command: php artisan serve
  
- ## Manage the blog
+ ## Use the blog
  url for blog: http://127.0.0.1:8000
  
  url for blog managment: http://127.0.0.1:8000/admin/login
